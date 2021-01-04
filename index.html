@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .searchDiv{
+            border: 1px solid black;
+            width: 100%;
+            height: 100px;
+        }
+        .dataDiv{
+            border: 1px solid blue;
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mountain Climbed Record</h1>
+
+    <div class="body">
+        <div class="searchDiv">
+            <h3>search</h3>
+            <input id="mountainName" type="text">
+            <button onclick="handleClick()">Click</button>
+        </div>
+        <div class="dataDiv">
+            <h3>Mountain List</h3>
+            <ul id="mountainList">
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+    const inputDOM = document.getElementById("mountainName");
+    const mountainList = [];
+
+    const handleClick = () => {
+        if(inputDOM.value == ""){
+            console.log("input empty");
+            return;
+        }
+        mountainList.push(inputDOM.value);
+        const node = document.createElement("li");
+        node.appendChild(document.createTextNode(inputDOM.value));
+        node.id = "mountainItem" + mountainList.length;
+        document.getElementById("mountainList").appendChild(node);
+        
+        inputDOM.value = "";
+    }
+</script>
+</html>
